@@ -95,6 +95,8 @@ $@"<Project>
                 }
             });
             
+            Add("ci", DependsOn("update-version", "test", "deploy", "publish"));
+            
             Add("default", DependsOn("build"));
 
             return Run(options);
