@@ -20,7 +20,11 @@ namespace Build
             var nugetSource = "https://api.nuget.org/v3/index.json";
             var nugetApiKey = Environment.GetEnvironmentVariable("NUGET_API_KEY");
 
-            var commandBuildArgs = $"--configuration {options.Configuration} --version-suffix \"{gitversion.PreReleaseTag}\"";
+            var commandBuildArgs = $"--configuration {options.Configuration}";
+            if (!string.IsNullOrEmpty(gitversion.PreReleaseTag))
+            {
+                commandBuildArgs += $" --version-suffix \"{gitversion.PreReleaseTag}\"";
+            }
             
             Add("clean", () =>
             {
