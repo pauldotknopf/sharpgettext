@@ -34,7 +34,7 @@ namespace Build
             
             Add("test", () =>
             {
-                RunShell("dotnet test test/MarkdownTranslator.Tests/");
+                RunShell("dotnet test test/SharpGettext.Tests/");
             });
             
             Add("deploy", DependsOn("clean"), () =>
